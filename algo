@@ -1,0 +1,54 @@
+class LinkedlistNode:
+    def __init__(self, value, Nextnode=None, ):
+        self.value = value
+        self.Nextnode = Nextnode
+
+
+class LinkedList:
+    def __init__(self, head=None):
+        self.head = head
+
+    def insert(self, value):
+        node = LinkedlistNode(value)
+        if self.head is None:
+            self.head = node
+            return
+
+        currentNode = self.head
+        while currentNode.Nextnode:
+            currentNode = currentNode.Nextnode
+        currentNode.Nextnode = node
+
+    def printLinkedList(self):
+        currentNode = self.head
+        while currentNode is not None:
+            print(currentNode.value + "=>")
+            currentNode = currentNode.Nextnode
+            if currentNode is None:
+                print("None")
+
+    def chck(self):
+        currentNode = self.head
+        check = input("Write number to find: ")
+        t = False
+        while currentNode is not None:
+            if currentNode.value == check:
+                print('Found')
+                t = True
+            currentNode = currentNode.Nextnode
+        if t is False:
+            print('Not found')
+            
+
+ll = LinkedList()
+ans = "yes"
+while ans == "yes":
+    ll.insert(input("put some number: "))
+    ans = input("Do you want to edit another number! yes or no: ")
+
+ll.printLinkedList()
+
+ser = 'yes'
+while ser == 'yes':
+    ll.chck()
+    ser = 'no'
